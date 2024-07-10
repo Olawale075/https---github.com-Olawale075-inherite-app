@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, Animated, Image, ImageBackgroundBase } from 'react-native';
+import { View, Text, StyleSheet, Animated, Image, ImageBackgroundBase, ImageBackground } from 'react-native';
 
 const SplashScreen = ({ navigation }) => {
   const fadeAnim = new Animated.Value(0);
@@ -17,7 +17,8 @@ const SplashScreen = ({ navigation }) => {
   }, [fadeAnim, navigation]);
 
   return (
-    
+    <ImageBackground source={require('../assets/backgrounds.jpg')} style={styles.backgrounds}>
+   
     <View style={styles.container}>
       <Animated.View style={{ ...styles.logoContainer, opacity: fadeAnim }}>
         <Text style={styles.description}>Design and implemented by </Text>
@@ -30,7 +31,7 @@ const SplashScreen = ({ navigation }) => {
          <Text style={styles.description}> Supervise By Dr. (Mrs.) Abdulsalami B.A </Text>
       </Animated.View>
     </View>
-
+    </ImageBackground>
   );
 };
 
@@ -40,6 +41,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#eee',
     justifyContent: 'center',
     alignItems: 'center',
+  },  backgrounds: {
+    flex: 1,
+    resizeMode: 'cover', // or 'stretch' or 'contain'
+    justifyContent: 'center',
   },
   logoContainer: {
     alignItems: 'center',
@@ -50,7 +55,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   }, description: {
     fontSize: 16,
-    color: '#00000',
+    color: 'blue',
     textAlign: 'center',
     marginBottom: 40,
   },
